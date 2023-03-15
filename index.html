@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Info Form</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  </head>
+  <!-- onsubmit="addInfo()"-->
+  <body>
+    <section>
+      <nav>
+        <nav class="navbar navbar-expand-lg bg-primary-subtle">
+          <div style="margin-left: auto; margin-right: auto">
+            <a class="navbar-brand" href="#">STUDENT INFO FORM</a>
+          </div>
+        </nav>
+      </nav>
+    </section>
+    <section class="m-5">
+      <div class="container border border-primary rounded" style="width: 70%">
+        <form class="p-3 m-3" id="studentForm">
+          <div class="row">
+            <div class="row">
+              <div class="mb-3 col-4">
+                <label for="firstname" class="form-label">First Name</label>
+                <input
+                  type="text"
+                  id="firstname"
+                  class="form-control border-primary-subtle"
+                />
+              </div>
+              <div class="mb-3 col-4">
+                <label for="middlename" class="form-label">Middle Name</label>
+                <input
+                  type="text"
+                  id="middlename"
+                  class="form-control border-primary-subtle"
+                />
+              </div>
+              <div class="mb-3 col-4">
+                <label for="lastname" class="form-label">Last Name</label>
+                <input
+                  type="text"
+                  id="lastname"
+                  class="form-control border-primary-subtle"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="mb-3 col-3">
+              <label for="dateofbirth" class="form-label">Date of Birth</label>
+              <input
+                type="date"
+                class="form-control border-primary-subtle"
+                id="dob"
+              />
+            </div>
+            <div class="col-4 border-primary-subtle">
+              <label for="basic-url" class="form-label">Contact number</label>
+              <div class="input-group mb-3 border-primary-subtle">
+                <span class="input-group-text border-primary-subtle">+</span>
+                <div class="col-3">
+                  <input
+                    type="number"
+                    class="form-control pe-0 border-primary-subtle border"
+                    id="code"
+                    placeholder="1"
+                    min="1"
+                    max="999"
+                    style="border-radius: 0"
+                  />
+                </div>
+                <input
+                  type="text"
+                  class="form-control border-primary-subtle"
+                  id="mobile"
+                  placeholder="MobileNumber"
+                />
+              </div>
+            </div>
+            <div class="mb-3 col-5">
+              <label for="exampleInputEmail1" class="form-label"
+                >Email address</label
+              >
+              <input
+                type="email"
+                class="form-control border-primary-subtle"
+                id="email"
+                aria-describedby="emailHelp"
+              />
+            </div>
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="row">
+                <button
+                  onclick="addInfo()"
+                  type="button"
+                  id="submitbtn"
+                  class="btn btn-outline-primary d-block ms-auto me-auto col-2"
+                >
+                  Submit
+                </button>
+
+                <button
+                  onclick="inputClear()"
+                  type="button"
+                  id="resetFormbtn"
+                  class="btn btn-outline-danger d-block ms-auto me-auto col-2"
+                >
+                  Clear Form
+                </button>
+
+                <button
+                  onclick="removeInfo()"
+                  type="button"
+                  id="cleatTablebtn"
+                  class="btn btn-outline-danger d-block ms-auto me-auto col-2"
+                >
+                  Clear Table
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+    <section>
+      <div class="container">
+        <table class="table" id="infotable">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>First Name</th>
+              <th>Middle Name</th>
+              <th>Last Name</th>
+              <th>Date of Birth</th>
+              <th>Contact Number</th>
+              <th>Email Address</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </div>
+    </section>
+  </body>
+  <!-- <button
+    onclick="deleteForm()"
+    type="button"
+    id="deletebtn"
+    class="btn btn-outline-danger d-block ms-auto me-auto col-2"
+  >
+     Delete
+  </button> -->
+  <script src="/script.js"></script>
+</html>
