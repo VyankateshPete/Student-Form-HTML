@@ -2,6 +2,8 @@ const infotable = document.getElementById("tableBody");
 var arrData = [];
 var localArrData = JSON.parse(localStorage.getItem("arrData") || "[]");
 var count = localArrData.length;
+var updateCount;
+var updateData;
 tablePrint();
 
 function addInfo() {
@@ -67,9 +69,7 @@ function tablePrint() {
         tempContent +=
           "<td>" +
           tempObj[x] +
-          "</td><td><button onclick='deleteForm(this," +
-          i +
-          ")' type='button' id='deletebtn' class='btn btn-outline-danger d-block'> Delete </button></td></tr>";
+          "</td><td><button onclick='updateForm(this," + i + ")' type='button' id='updatebtn' class='btn btn-outline-info d-block'> Update </button></td><td><button onclick='deleteForm(this," + i + ")' type='button' id='deletebtn' class='btn btn-outline-danger d-block'> Delete </button></td></tr>";
       } else {
         tempContent += "<td>" + tempObj[x] + "</td>";
       }
@@ -89,6 +89,57 @@ function deleteForm(Obj, count) {
   window.localStorage.setItem("arrData", JSON.stringify(arrData));
   reindex();
   tablePrint();
+}
+
+function updateForm(Obj, count) {
+  updateCount = count;
+  console.log(updateCount);
+  const tempObj = localArrData[count];
+  document.getElementById("firstname").value = tempObj.firstName;
+  document.getElementById("middlename").value = tempObj.middleName;
+  document.getElementById("lastname").value = tempObj.lastName;
+  document.getElementById("dob").value = tempObj.dob;
+  let mobile = tempObj.mobile;
+  let code = mobile
+  let length = mobile.length
+  code = Number(code.substr(1,2));
+  let number = mobile.substr(3,length);
+  // console.log(code);
+  // console.log(mobile);
+  document.getElementById("code").value = code;
+  document.getElementById("mobile").value = number;
+  document.getElementById("email").value = tempObj.email;
+  
+  //console.log(localArrData[index]);
+  // localArrData.splice(count, 1);
+  // window.localStorage.setItem("arrData", JSON.stringify(arrData));
+  // reindex();
+  // tablePrint();
+}
+
+function submitUpdate(){
+  var firstName = document.getElementById("firstname").value;
+  var middleName = document.getElementById("middlename").value;
+  var lastName = document.getElementById("lastname").value;
+  var dateofBirth = document.getElementById("dob").value;
+  var countryCode = document.getElementById("code").value;
+  var mobile = document.getElementById("mobile").value;
+  var email = document.getElementById("email").value;
+  const myObject = {
+    count: updateCount + 1,
+    firstName: firstName,
+    middleName: middleName,
+    lastName: lastName,
+    dob: dateofBirth,
+    mobile: "+" + countryCode + mobile,
+    email: email,
+  };
+  localArrData[updateCount] = myObject;
+  arrData = localArrData;
+  window.localStorage.setItem("arrData", JSON.stringify(arrData));
+  inputClear();
+  tablePrint();
+
 }
 
 function inputClear() {
